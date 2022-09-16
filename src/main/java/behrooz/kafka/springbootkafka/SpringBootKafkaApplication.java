@@ -34,7 +34,7 @@ public class SpringBootKafkaApplication {
 
     @KafkaListener(topics = "${spring-boot-kafka.topic-name}")
     public void listenAsObject(@Payload MessageDto messageDto) {
-        System.out.println("Received <" + messageDto.toString() + ">");
+        System.out.println("Received " + messageDto.toString());
     }
 
 }
