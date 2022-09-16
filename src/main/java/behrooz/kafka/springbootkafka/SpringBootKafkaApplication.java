@@ -32,7 +32,7 @@ public class SpringBootKafkaApplication {
         kafkaTemplate.send(topicName, new MessageDto(++id, new Date().toString()));
     }
 
-    @KafkaListener(topics = "${spring-boot-kafka.topic-name}", groupId = "${spring.kafka.consumer.group-id}", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = "${spring-boot-kafka.topic-name}")
     public void listenAsObject(@Payload MessageDto messageDto) {
         System.out.println("Received <" + messageDto.toString() + ">");
     }
