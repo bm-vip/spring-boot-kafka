@@ -22,8 +22,10 @@ public class SpringBootKafkaApplication {
 
     @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
+
     @Value("${spring-boot-kafka.topic-name}")
     private String topicName;
+
     private int id;
 
     @Scheduled(fixedRate = 5000, initialDelay = 10000)
