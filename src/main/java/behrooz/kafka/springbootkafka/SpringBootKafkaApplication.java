@@ -1,6 +1,5 @@
 package behrooz.kafka.springbootkafka;
 
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -30,6 +29,7 @@ public class SpringBootKafkaApplication {
     @Scheduled(fixedRate = 5000, initialDelay = 10000)
     public void send() {
         kafkaTemplate.send(topicName, new MessageDto(++id, new Date().toString()));
+        System.out.println("Sent " + id + " to topic: " + topicName);
     }
 
     @KafkaListener(topics = "${spring-boot-kafka.topic-name}")
